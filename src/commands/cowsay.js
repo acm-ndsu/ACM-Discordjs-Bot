@@ -6,12 +6,12 @@ module.exports = {
         .setName('cowsay')
         .setDescription('Makes a cow say your message')
         .addStringOption(option =>
-            option.setName('message').setDescription('message to make a cow say')),
+            option.setName('message').setDescription('message to make a cow say').setRequired(true)),
     async execute(interaction) {
-        await interaction.reply(cowsay.say({
+        await interaction.reply(`\`\`\`${cowsay.say({
             text: interaction.options.getString('message'),
             e : "oO",
             T : "U "
-        }))
+        })}\`\`\``)
     },
 };

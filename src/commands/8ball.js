@@ -35,7 +35,7 @@ module.exports = {
         ]
 
         choice = Math.floor(Math.random() * 19)
-
-        await interaction.reply(responses[choice])
+        await interaction.reply(`> ${message}`)
+        await interaction.channel.send(responses[choice])
     },
 };

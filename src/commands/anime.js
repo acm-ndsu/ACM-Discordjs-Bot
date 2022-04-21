@@ -1,6 +1,6 @@
-const { SlashCommandBuilder } = require('@discordjs/builders')
-const axios = require('axios')
-const utilities = require('../utilities.js')
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const axios = require('axios');
+const utilities = require('../utilities.js');
 
 module.exports = {
     // preload meme id's
@@ -175,7 +175,7 @@ module.exports = {
             }
         })
         .then(async (res) => {
-            await interaction.reply({ content: res.data.data.url})
+            await interaction.reply({ content: res.data.data.url});
         })
         .catch(error => {
             console.error(error);
