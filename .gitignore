@@ -1,4 +1,10 @@
+# npm
 node_modules
 
+# bot specific files
 config.json
 persistence
+
+# editors
+.vscode
+.idea
