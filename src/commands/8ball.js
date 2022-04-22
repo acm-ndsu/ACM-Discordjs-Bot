@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('@discordjs/builders')
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const utilities = require('../utilities.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -32,10 +33,9 @@ module.exports = {
             "My sources say no",
             "Outlook not so good",
             "Very doubtful",
-        ]
+        ];
 
-        choice = Math.floor(Math.random() * 19)
         await interaction.reply(`> ${message}`)
-        await interaction.channel.send(responses[choice])
+        await interaction.channel.send(utilities.choose(responses));
     },
 };
