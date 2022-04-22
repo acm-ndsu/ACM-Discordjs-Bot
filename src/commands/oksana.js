@@ -50,6 +50,6 @@ module.exports = {
         .setName('oksana')
         .setDescription('Quotes Oksana'),
     async execute(interaction) {
-        await interaction.send(utilities.choose(phrases));
+        await interaction.reply(utilities.choose(this.phrases));
     },
 };

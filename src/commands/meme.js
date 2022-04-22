@@ -2,9 +2,12 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const axios = require('axios');
 const utilities = require('../utilities.js');
 
+getMemeIds = async () => {
+    res = await axios.get("https://api.imgflip.com/get_memes");
+    return res.data.data.memes;
+}
+
 module.exports = {
-    memeIds:
-        axios.get("https://api.imgflip.com/get_memes").data.memes,
     data: new SlashCommandBuilder()
         .setName('meme')
         .setDescription('Generates a random meme using imgflip api')
@@ -16,7 +19,7 @@ module.exports = {
             option => option.setName('bottom')
                 .setDescription('text for second panel')),
     async execute(interaction) {
-        memeId = utilities.choose(this.memeIds);
+        memeId = utilities.choose(await getMemeIds()).id;
         axios.post("https://api.imgflip.com/caption_image",{} , {
             params: {
                 "template_id": memeId,

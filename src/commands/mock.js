@@ -6,19 +6,18 @@ module.exports = {
         .setDescription('Returns the sentence in Spongebob mock-case.')
         .addStringOption(option =>
             option.setName('text')
-                .setDescription('Text to change to mock-case')),
+                .setDescription('Text to change to mock-case')
+                .setRequired(true)),
     async execute(interaction) {
         text = interaction.options.getString('text');
 
-        increment = 1;
         returnMessage = "";
         for(var i = 0; i < text.length; i++) {
-            if (increment % 2 == 0) {
-                returnMessage += text[i].toLower();
+            if (i % 2 == 0) {
+                returnMessage += text[i].toLowerCase();
             } else {
-                returnMessage += text[i].toUpper();
+                returnMessage += text[i].toUpperCase();
             }
-            increment++;
         }
 
         await interaction.reply(returnMessage);
