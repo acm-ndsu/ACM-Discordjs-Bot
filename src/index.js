@@ -46,7 +46,13 @@ client.once('ready', () => {
 				}
 			});
 		});
+		console.log('Logged in as');
+		console.log(client.user.username);
+		id = client.user.id;
+		console.log(id);
+		console.log('-'.repeat(id.length));
 		console.log('Ready!');
+
 	}).catch(console.log)
 });
 
