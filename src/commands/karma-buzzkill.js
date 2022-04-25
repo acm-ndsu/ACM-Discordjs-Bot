@@ -18,11 +18,16 @@ module.exports = {
     }],
     async execute(interaction) {
         amount = interaction.options.getInteger('amount');
-        this.state.buzzkillLimit = amount;        
+        if (amount > 0) {
+            this.state.buzzkillLimit = amount;   
+            utilities.saveState('karma-buzzkill', this.state);
+            message = `Set karma buzzkill amount to ${amount}`
+        } else {
+            message = `Buzzkill amount not set; must be greater than 0`
+        }
 
-        utilities.saveState('karma-buzzkill', this.state);
         interaction.reply({ 
-            content: `Set karma buzzkill amount to ${amount}`, 
+            content: message, 
             ephemeral: true 
         });
     },

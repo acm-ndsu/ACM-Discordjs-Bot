@@ -3,7 +3,7 @@ node_modules
 
 # bot specific files
 config.json
-persistence
+persistence/*
 
 # editors
 .vscode
