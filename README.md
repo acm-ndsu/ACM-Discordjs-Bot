@@ -29,7 +29,7 @@ Robbot is built with [discord.js](https://discord.js.org/#/)
 
 To run Robbot, make sure you have Node v16.6.0 or higher installed. Before running, make sure you install dependencies by running `npm install`. Then run `npm start`. This will run both `deploy-commands.js`, which registers the commands with the server, and `index.js` which runs the actual server. If for some reason you don't want both to run together, they can be run seperately by running `node <filename>`.
 
-You will also need to setup a `config.json` file. In this you'll need to put your bot's private token key, your public clientID, and the server's public guildId in this format:
+You will also need to setup a `config.json` file. In this you'll need to put your bot's private token key, your public clientID, and the server's public guildID in this format:
 
 ```json
 {
