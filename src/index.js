@@ -27,10 +27,12 @@ for (const file of commandFiles) {
 	// set a new item in the collection
 	// with the key as the command name and the value as the export module
 	client.commands.set(command.data.name, command);
+
+	//NEEDS FIX
 	// if the command has a permission set, record it for later
-	if (command.permissions) {
-		commandPermissions.push({ [command.data.name]: command.permissions})
-	}
+	// if (command.permissions) {
+	// 	commandPermissions.push({ [command.data.name]: command.permissions})
+	// }
 }
 
 // When the client is ready, run this code (only once)
