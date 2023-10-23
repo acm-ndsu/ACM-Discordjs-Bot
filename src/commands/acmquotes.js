@@ -6,11 +6,11 @@ module.exports = {
         utilities.loadState('acmquotes'),
     data: new SlashCommandBuilder()
         .setName('acmquotes')
-        .setDescription('acmquotesmanager')
+        .setDescription('acm quotes manager')
         .addSubcommand(subcommand =>
             subcommand.setName('new')
                 .setDescription('Add new quote')
-                .addUserOption(option =>
+                .addStringOption(option =>
                     option.setName('quote')
                         .setDescription('quote to create')))
         .addSubcommand(subcommand =>
@@ -28,10 +28,12 @@ module.exports = {
         }
         if (!this.state.quotes) {
             this.state.quotes = [];
+            utilities.saveState('acmquotes', this.state);
         }
 
         if(interaction.options.getSubcommand() === 'new'){
             this.state.quotes.push(interaction.options.getString('quote'))
+            await interaction.reply(`Quote: '${interaction.options.getString('quote')}' has been added!`);
         }
 
         utilities.saveState('acmquotes', this.state);
