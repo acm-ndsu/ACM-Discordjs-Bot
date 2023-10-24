@@ -8,6 +8,6 @@ module.exports = {
         if(interaction.user.id === '137754149210030080')
             await interaction.reply({content: 'You spelt it wrong, Adam!'})
         else
-            await interaction.reply({files: [{attachment: '../persistence/batcomb.png'}]})
+            await interaction.reply({files: [{attachment: 'persistence/batcomb.png'}]})
     }
 };
