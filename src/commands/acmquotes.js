@@ -32,8 +32,14 @@ module.exports = {
         }
 
         if(interaction.options.getSubcommand() === 'new'){
-            this.state.quotes.push(interaction.options.getString('quote'))
-            await interaction.reply(`Quote: '${interaction.options.getString('quote')}' has been added!`);
+            const text = utilities.filterText(interaction.options.getString('quote'));
+            if(!text){
+                await interaction.reply(`Quote contains a banned substring!`);
+            } else {
+                this.state.quotes.push(text)
+                await interaction.reply(`Quote: '${text}' has been added!`);
+            }
+
         }
 
         utilities.saveState('acmquotes', this.state);

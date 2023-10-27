@@ -146,6 +146,6 @@ module.exports = {
         .setName('breadbank')
         .setDescription('Prints a random breadbank line.'),
     async execute(interaction) {
-        await interaction.reply(choose(this.lines))
+        await interaction.reply(`||${choose(this.lines)}||`)
     }
 };
