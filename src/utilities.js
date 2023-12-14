@@ -92,7 +92,7 @@ module.exports = {
             "porki",
         ];
 
-        const isBanned = banlist.any(word => text.toLowerCase().contains(word));
+        const isBanned = banlist.some(word => text.toLowerCase().contains(word));
 
         if(isBanned){
             return false;
