@@ -15,7 +15,10 @@ module.exports = {
                         .setDescription('quote to create')))
         .addSubcommand(subcommand =>
             subcommand.setName('print')
-                .setDescription('prints a random ACM Quote')),
+                .setDescription('prints a random ACM Quote'))
+        .addSubcommand(subcommand =>
+            subcommand.setName('list')
+                .setDescription('lists all ACM Quotes')),
     async execute(interaction) {
         if (interaction.options.getSubcommand() === 'print') {
             const hasQuotes = this.state.quotes;
@@ -26,6 +29,17 @@ module.exports = {
             }
             return;
         }
+
+        if (interaction.options.getSubcommand() === 'list') {
+            const hasQuotes = this.state.quotes;
+            if (hasQuotes) {
+                await interaction.reply(this.state.quotes.join('\n'));
+            } else {
+                await interaction.reply("There are no quotes. You should add some");
+            }
+            return;
+        }
+
         if (!this.state.quotes) {
             this.state.quotes = [];
             utilities.saveState('acmquotes', this.state);

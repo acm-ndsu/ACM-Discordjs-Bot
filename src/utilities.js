@@ -92,7 +92,7 @@ module.exports = {
             "porki",
         ];
 
-        const isBanned = banlist.some(word => text.toLowerCase().contains(word));
+        const isBanned = banlist.some(word => text.toLowerCase().includes(word));
 
         if(isBanned){
             return false;
@@ -100,9 +100,9 @@ module.exports = {
 
         const asterisk = "\\*"
 
-        let toAsterisked = (x) => x[0]+x.substring(1).replaceAll(".", asterisk)
+        let toAsterisked = (x) => x[0]+x.substring(1).replace(/./g, asterisk)
 
-        return censorlist.map(word => text = text.replaceAll(new RegExp(word, i), toAsterisked(word)))[-1]
+        return censorlist.reduce((state, word) => state.replaceAll(new RegExp(word, 'ig'), toAsterisked(word)), text)[-1]
 
     },
 
